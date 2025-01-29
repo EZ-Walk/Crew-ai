@@ -1,10 +1,16 @@
 #!/usr/bin/env python
 import sys
 import warnings
+from dotenv import load_dotenv
+import os
 
 from ragagents.crew import Ragagents
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
+
+# Load API keys from .env
+load_dotenv()
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 # This main file is intended to be a way for you to run your
 # crew locally, so refrain from adding unnecessary logic into this file.
@@ -56,3 +62,6 @@ def test():
 
     except Exception as e:
         raise Exception(f"An error occurred while replaying the crew: {e}")
+
+if __name__ == "__main__":
+    run()
