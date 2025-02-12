@@ -3,36 +3,126 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import SerperDevTool, ScrapeWebsiteTool
 
+from phoenix.otel import register
+
+tracer_provider = register(
+  project_name="my-llm-app", # Default is 'default'
+  endpoint="http://localhost:6006/v1/traces",
+)
+
+from openinference.instrumentation.litellm import LiteLLMInstrumentor
+
+LiteLLMInstrumentor().instrument(tracer_provider=tracer_provider)
+
+
 @CrewBase
 class LatestAiDevelopmentCrew():
   """LatestAiDevelopment crew"""
 
   @agent
-  def researcher(self) -> Agent:
+  def risk_assessment_agent(self) -> Agent:
     return Agent(
-      config=self.agents_config['researcher'],
-      verbose=True,
-      tools=[SerperDevTool(), ScrapeWebsiteTool()]
+      config=self.agents_config['risk_assessment_agent'],
+      verbose=True
+    )
+    
+  @agent
+  def compliance_agent(self) -> Agent:
+    return Agent(
+      config=self.agents_config['compliance_agent'],
+      verbose=True
     )
 
   @agent
-  def reporting_analyst(self) -> Agent:
+  def efficiency_agent(self) -> Agent:
     return Agent(
-      config=self.agents_config['reporting_analyst'],
+      config=self.agents_config['efficiency_agent'],
+      verbose=True
+    )
+    
+  @agent
+  def human_impact_agent(self) -> Agent:
+    return Agent(
+      config=self.agents_config['human_impact_agent'],
+      verbose=True
+    )
+    
+  @agent
+  def implementation_agent(self) -> Agent:
+    return Agent(
+      config=self.agents_config['implementation_agent'],
+      verbose=True
+    )
+
+  @agent
+  def documentation_agent(self) -> Agent:
+    return Agent(
+      config=self.agents_config['documentation_agent'],
+      verbose=True
+    )
+
+  @agent
+  def training_agent(self) -> Agent:
+    return Agent(
+      config=self.agents_config['training_agent'],
+      verbose=True
+    )
+
+  @agent
+  def integration_agent(self) -> Agent:
+    return Agent(
+      config=self.agents_config['integration_agent'],
       verbose=True
     )
 
   @task
-  def research_task(self) -> Task:
+  def risk_assessment_task(self) -> Task:
     return Task(
-      config=self.tasks_config['research_task'],
+      config=self.tasks_config['risk_assessment_task']
     )
 
   @task
-  def reporting_task(self) -> Task:
+  def compliance_task(self) -> Task:
     return Task(
-      config=self.tasks_config['reporting_task'],
-      output_file='output/report.md' # This is the file that will be contain the final report.
+      config=self.tasks_config['compliance_task']
+    )
+
+  @task
+  def efficiency_task(self) -> Task:
+    return Task(
+      config=self.tasks_config['efficiency_task']
+    )
+
+  @task
+  def human_impact_task(self) -> Task:
+    return Task(
+      config=self.tasks_config['human_impact_task']
+    )
+
+  @task
+  def implementation_task(self) -> Task:
+    return Task(
+      config=self.tasks_config['implementation_task']
+    )
+
+  @task
+  def documentation_task(self) -> Task:
+    return Task(
+      config=self.tasks_config['documentation_task'],
+      output_file='output/remote_work_policy.md'
+    )
+
+  @task
+  def training_task(self) -> Task:
+    return Task(
+      config=self.tasks_config['training_task'],
+      output_file='output/training_program.md'
+    )
+
+  @task
+  def integration_task(self) -> Task:
+    return Task(
+      config=self.tasks_config['integration_task']
     )
 
   @crew

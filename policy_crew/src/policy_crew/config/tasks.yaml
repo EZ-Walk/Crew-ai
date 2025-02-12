@@ -1,0 +1,87 @@
+risk_assessment_task:
+  description: >-
+    Analyze potential financial and operational risks associated with remote work policy
+  expected_output: >-
+    A comprehensive risk assessment report covering:
+    - Financial implications of remote work infrastructure
+    - Risk exposure in donor fund management with remote operations
+    - Operational continuity risks
+    - Data security and privacy considerations
+  agent: risk_assessment_agent
+
+compliance_task:
+  description: >-
+    Ensure remote work policy aligns with non-profit regulations and grant requirements
+  expected_output: >-
+    A compliance framework document detailing:
+    - Regulatory requirements for remote operations
+    - Grant compliance considerations
+    - Tax implications of remote work
+    - Required policy elements for 501(c)(3) status maintenance
+  agent: compliance_agent
+
+efficiency_task:
+  description: >-
+    Optimize resource allocation and operational processes for remote work
+  expected_output: >-
+    An efficiency analysis report covering:
+    - Cost-benefit analysis of remote work tools
+    - Resource optimization recommendations
+    - Process improvement suggestions
+    - Overhead reduction strategies
+  agent: efficiency_agent
+
+human_impact_task:
+  description: >-
+    Assess impact of remote work policy on staff, volunteers, and stakeholders
+  expected_output: >-
+    A stakeholder impact report detailing:
+    - Staff and volunteer feedback considerations
+    - Donor relationship management strategies
+    - Beneficiary service delivery impact
+    - Team collaboration recommendations
+  agent: human_impact_agent
+
+implementation_task:
+  description: >-
+    Design practical systems and processes for remote work implementation
+  expected_output: >-
+    An implementation plan including:
+    - Technical infrastructure requirements
+    - Budget considerations
+    - Timeline for rollout
+    - Required tools and resources
+  agent: implementation_agent
+
+documentation_task:
+  description: >-
+    Create comprehensive remote work policy documentation
+  expected_output: >-
+    Complete policy documentation including:
+    - Main policy document
+    - Procedure guides
+    - Forms and templates
+    - Quick reference guides
+  agent: documentation_agent
+
+training_task:
+  description: >-
+    Develop training program for remote work policy adoption
+  expected_output: >-
+    A training program package including:
+    - Training materials
+    - Assessment tools
+    - Implementation schedule
+    - Success metrics
+  agent: training_agent
+
+integration_task:
+  description: >-
+    Ensure remote work policy aligns with organizational mission and existing policies
+  expected_output: >-
+    An integration report covering:
+    - Policy alignment analysis
+    - Conflict resolution recommendations
+    - Mission impact assessment
+    - Change management strategy
+  agent: integration_agent
